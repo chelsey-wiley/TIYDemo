@@ -1,8 +1,8 @@
+if (window.FC === undefined) {window.FC = {};}
 
-var mountNode = document.querySelector('#react-root');
-
-
-class AppComponent extends React.Component {
+(function() {
+  'use strict';
+  class YoutubeComponent extends React.Component {
 
     componentDidMount(){
       this.theInput.focus();
@@ -39,7 +39,8 @@ class AppComponent extends React.Component {
           "&q=YouTube+Data+API" +
           "&type=video" +
           "&videoCaption=closedCaption" +
-          "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" + "&part=snippet"
+          "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" +
+          "&part=snippet"
       })
       .done((data)=> {
         console.log('got the data', data);
@@ -49,28 +50,28 @@ class AppComponent extends React.Component {
       });
     }
 
+      render() {
+        var YoutubeUrl = 'http://www.youtube.com/watch?v='
+        var embeddedUrl ='https://www.youtube.com/embed/'
+        return <div className="youtube-component">
 
-    render() {
-      var YoutubeUrl = 'http://www.youtube.com/watch?v='
-      var embeddedUrl ='https://www.youtube.com/embed/'
-      return <div className="youtube-component">
-
-        <div className="search-bar">
-            <input placeholder ="search" onKeyUp={(evt) => {this.keyUp(evt); }} ref={(theDomElement) => {this.theInput = theDomElement;}}/>
-            <button onClick={() => {this.clicky(); }}>enter</button>
-        </div>
+          <div className="search-bar">
+              <input placeholder ="search" onKeyUp={(evt) => {this.keyUp(evt); }} ref={(theDomElement) => {this.theInput = theDomElement;}}/>
+              <button onClick={() => {this.clicky(); }}>enter</button>
+          </div>
 
 
-        <ul className="results">
-          {this.state.apiResult.items.map((info) => {
+          <ul className="results">
+            {this.state.apiResult.items.map((info) => {
               return <li className="theList"
                 key={info.id.videoId}><a className= "video-link" href =  {embeddedUrl+info.id.videoId} target = "iframeName">{info.snippet.title}</a>
                 <p className="video-description">{info.snippet.description}</p>
               </li>
-            })}
-        </ul>
+              })}
+          </ul>
       </div>
+
     }
   }
-
-ReactDOM.render(<AppComponent />, mountNode);
+  FC.YoutubeComponent = YoutubeComponent;
+}());

@@ -1,9 +1,18 @@
+if (window.FC === undefined) {window.FC = {};}
+
+(function() {
 var mountNode = document.querySelector('#react-root');
 
 class AppComponent extends React.Component {
   render() {
-    return <div>React works!</div>;
+    return <div className="container">
+    
+      <h2> Youtube </h2>
+      <FC.YoutubeComponent/>
+
+    </div>;
   }
 }
 
 ReactDOM.render(<AppComponent />, mountNode);
+}());

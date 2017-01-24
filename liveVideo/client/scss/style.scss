@@ -1,5 +1,12 @@
 @import 'reset';
 
-p {
-  color: red;
+.youtube-component {
+  border: 1px solid green;
+}
+.results {
+  background-color: yellow;
+}
+.iframeName{
+  height: 300px;
+  width: 500px;
 }
