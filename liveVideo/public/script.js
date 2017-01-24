@@ -35,7 +35,13 @@ if (window.FC === undefined) {
             null,
             " Youtube "
           ),
-          React.createElement(FC.YoutubeComponent, null)
+          React.createElement(FC.YoutubeComponent, null),
+          React.createElement(
+            "h2",
+            null,
+            " Recording "
+          ),
+          React.createElement(FC.RecordingComponent, null)
         );
       }
     }]);
