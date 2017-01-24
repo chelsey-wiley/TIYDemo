@@ -95,11 +95,17 @@ var AppComponent = function (_React$Component) {
           this.state.apiResult.items.map(function (info) {
             return React.createElement(
               'li',
-              { className: 'theList', key: info.id.videoId },
+              { className: 'theList',
+                key: info.id.videoId },
               React.createElement(
                 'a',
-                { href: embeddedUrl + info.id.videoId, target: 'iframeName' },
-                'name here'
+                { className: 'video-link', href: embeddedUrl + info.id.videoId, target: 'iframeName' },
+                info.snippet.title
+              ),
+              React.createElement(
+                'p',
+                { className: 'video-description' },
+                info.snippet.description
               )
             );
           })

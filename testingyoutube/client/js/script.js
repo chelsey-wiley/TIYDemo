@@ -63,7 +63,10 @@ class AppComponent extends React.Component {
 
         <ul className="results">
           {this.state.apiResult.items.map((info) => {
-              return <li className="theList" key={info.id.videoId}><a href =  {embeddedUrl+info.id.videoId} target = "iframeName">name here</a></li>
+              return <li className="theList"
+                key={info.id.videoId}><a className= "video-link" href =  {embeddedUrl+info.id.videoId} target = "iframeName">{info.snippet.title}</a>
+                <p className="video-description">{info.snippet.description}</p>
+              </li>
             })}
         </ul>
       </div>
