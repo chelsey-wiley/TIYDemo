@@ -1,5 +1,17 @@
 @import 'reset';
 
-p {
-  color: red;
+video {
+  background: #222;
+   margin: 10px auto;
+  width: 640px;
+  height:480px;
+}
+h1 {
+  font-size: 2em;
+  padding-top: 10px;
+}
+.recorder-container {
+  margin: 0 auto;
+  text-align: center;
+  font-family: sans-serif;
 }
