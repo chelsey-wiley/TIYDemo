@@ -6,16 +6,19 @@
       <title>Recorder Stand-Alone Component</title>
       <link rel="stylesheet" href="style.css" />
     </head>
-  <body>
-  <div class="recorder-container">
-  	<h1>Recorder </h1>
-  	<video controls autoplay></video><br>
-  	<button id="rec" onclick="onBtnRecordClicked()">Record</button>
-  	<button id="pauseRes"   onclick="onPauseResumeClicked()" disabled>Pause</button>
-  	<button id="stop"  onclick="onBtnStopClicked()" disabled>Stop</button>
-  <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
-  <p id="data"></p>
-  <script src="script.js"></script>
-  </div>
+    <body>
+    <div class="recorder-container">
+    	<h1>Recorder </h1>
+    	<video controls autoplay></video><br>
+    	<button id="rec">Record</button>
+    	<button id="pauseRes">Pause</button>
+    	<button id="stop"  onclick="onBtnStopClicked()" disabled>Stop</button>
+      <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+  
+      <p id="data"></p>
+    </div>
+
+    <script src="script.js"></script>
+
   </body>
   </html>
