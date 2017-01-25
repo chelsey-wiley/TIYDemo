@@ -5,17 +5,7 @@ if (window.FC === undefined) {window.FC = {};}
 
   class RecordingComponent extends React.Component {
 
-    componentDidMount(){
-      this.theInput.focus();
-    }
-
-    constructor(){
-      super();
-      this.state ={
-        apiResult:{
-          items:[]
-        }
-      }
+      thing(){
 
     var constraints = {"audio": true, "video": {  "mandatory": {  "minWidth": 640,  "maxWidth": 640, "minHeight": 480, "maxHeight": 480 }, "optional": [] } };
 
@@ -140,7 +130,7 @@ if (window.FC === undefined) {window.FC = {};}
     //   return <div> Recording Component
     //   </div>
     // }
+  }  
   }
-}
   FC.RecordingComponent = RecordingComponent;
 }());
