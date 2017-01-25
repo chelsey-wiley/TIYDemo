@@ -7,12 +7,11 @@ class AppComponent extends React.Component {
   render() {
     return <div className="container">
 
-      // <h2> Youtube </h2>
-      // <FC.YoutubeComponent/>
-      //works
-
-      <h2> Recording </h2>
+      <h2> Recorder in script JS</h2>
       <FC.RecordingComponent/>
+
+      <h2>Youtube in script JS</h2>
+      <FC.YoutubeComponent/>
 
     </div>;
   }

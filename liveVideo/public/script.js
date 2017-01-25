@@ -30,21 +30,18 @@ if (window.FC === undefined) {
         return React.createElement(
           "div",
           { className: "container" },
-          "// ",
           React.createElement(
             "h2",
             null,
-            " Youtube "
+            " Recorder in script JS"
           ),
-          "// ",
-          React.createElement(FC.YoutubeComponent, null),
-          "//works",
+          React.createElement(FC.RecordingComponent, null),
           React.createElement(
             "h2",
             null,
-            " Recording "
+            "Youtube in script JS"
           ),
-          React.createElement(FC.RecordingComponent, null)
+          React.createElement(FC.YoutubeComponent, null)
         );
       }
     }]);
