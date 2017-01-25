@@ -1,9 +1,6 @@
 'use strict';
 
-
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-
-var constraints = { "video": { width: { max: 520 } }, "audio" : true }
+var constraints = { "audio": true, "video": { "mandatory": { "minWidth": 640, "maxWidth": 640, "minHeight": 480, "maxHeight": 480 }, "optional": [] } }; //Chrome
 
 
 var recBtn = document.querySelector('button#rec');
@@ -25,7 +22,6 @@ var chunks = [];
 var count = 0;
 
 function startRecording(stream) {
-	log('Start recording...');
 	if (typeof MediaRecorder.isTypeSupported == 'function') {
 		if (MediaRecorder.isTypeSupported('video/webm;codecs=h264')) {
 			var options = { mimeType: 'video/webm;codecs=h264' };
@@ -34,10 +30,10 @@ function startRecording(stream) {
 		} else if (MediaRecorder.isTypeSupported('video/webm;codecs=vp8')) {
 			var options = { mimeType: 'video/webm;codecs=vp8' };
 		}
-		log('Using ' + options.mimeType);
+
 		mediaRecorder = new MediaRecorder(stream, options);
 	} else {
-		log('Using default codecs for browser');
+
 		mediaRecorder = new MediaRecorder(stream);
 	}
 
@@ -54,17 +50,7 @@ function startRecording(stream) {
 		chunks.push(e.data);
 	};
 
-	mediaRecorder.onerror = function (e) {
-		log('Error: ' + e);
-		console.log('Error: ', e);
-	};
-
-	mediaRecorder.onstart = function () {
-		log('Started & state = ' + mediaRecorder.state);
-	};
-
 	mediaRecorder.onstop = function () {
-		log('Stopped  & state = ' + mediaRecorder.state);
 
 		var blob = new Blob(chunks, { type: "video/webm" });
 		chunks = [];
@@ -81,20 +67,7 @@ function startRecording(stream) {
 		downloadLink.setAttribute("download", name);
 		downloadLink.setAttribute("name", name);
 	};
-
-	mediaRecorder.onpause = function () {
-		log('Paused & state = ' + mediaRecorder.state);
-	};
-
-	mediaRecorder.onresume = function () {
-		log('Resumed  & state = ' + mediaRecorder.state);
-	};
-
-	mediaRecorder.onwarning = function (e) {
-		log('Warning: ' + e);
-	};
 }
-
 
 function onBtnRecordClicked() {
 	if (typeof MediaRecorder === 'undefined' || !navigator.getUserMedia) {
@@ -135,3 +108,4 @@ function onPauseResumeClicked() {
 function log(message) {
 	dataElement.innerHTML = dataElement.innerHTML + '<br>' + message;
 }
+//# sourceMappingURL=script.js.map
