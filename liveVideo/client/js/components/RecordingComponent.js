@@ -16,7 +16,7 @@ if (window.FC === undefined) {window.FC = {};}
   navigator.getUserMedia =
   navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia ||
   null;
-  
+
   var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
 
   class RecordingComponent extends React.Component {
@@ -48,8 +48,13 @@ if (window.FC === undefined) {window.FC = {};}
       console.log ('clicked record');
     };
 
-    clickPauseRes(){
-      console.log ('clicked Pause/Res');
+    clickPause(){
+      console.log ('clicked Pause');
+      video.pause();
+    };
+
+    clickResume(){
+      console.log ('clicked resume');
     };
 
     clickStop(){
@@ -71,7 +76,9 @@ if (window.FC === undefined) {window.FC = {};}
 
           <button id="record" onClick={() => {this.clickRec();}}>Record</button>
 
-          <button id="pauseRes" onClick={() => {this.clickPauseRes();}}>Pause</button>
+          <button id="pause" onClick={() => {this.clickPause();}}>Pause</button>
+
+            <button id="resume" onClick={() => {this.clickResume();}}>Resume</button>
 
           <button id="stop" onClick={() => {this.clickStop();}}>Stop</button>
 

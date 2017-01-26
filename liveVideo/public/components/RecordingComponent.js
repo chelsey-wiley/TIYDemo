@@ -66,9 +66,15 @@ if (window.FC === undefined) {
         console.log('clicked record');
       }
     }, {
-      key: "clickPauseRes",
-      value: function clickPauseRes() {
-        console.log('clicked Pause/Res');
+      key: "clickPause",
+      value: function clickPause() {
+        console.log('clicked Pause');
+        video.pause();
+      }
+    }, {
+      key: "clickResume",
+      value: function clickResume() {
+        console.log('clicked resume');
       }
     }, {
       key: "clickStop",
@@ -106,10 +112,17 @@ if (window.FC === undefined) {
           ),
           React.createElement(
             "button",
-            { id: "pauseRes", onClick: function onClick() {
-                _this2.clickPauseRes();
+            { id: "pause", onClick: function onClick() {
+                _this2.clickPause();
               } },
             "Pause"
+          ),
+          React.createElement(
+            "button",
+            { id: "resume", onClick: function onClick() {
+                _this2.clickResume();
+              } },
+            "Resume"
           ),
           React.createElement(
             "button",
