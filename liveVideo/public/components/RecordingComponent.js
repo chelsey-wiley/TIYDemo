@@ -15,6 +15,8 @@ if (window.FC === undefined) {
 (function () {
   'use strict';
 
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || null;
+
   var RecordingComponent = function (_React$Component) {
     _inherits(RecordingComponent, _React$Component);
 
@@ -25,9 +27,23 @@ if (window.FC === undefined) {
     }
 
     _createClass(RecordingComponent, [{
+      key: 'clickSupport',
+      value: function clickSupport() {
+        console.log('clicked support');
+        if (navigator.getUserMedia === null) {
+          alert('Sorry! This will not work on your browser.');
+          console.log('no support');
+        } else {
+          video: true;
+          audio: true;
+          console.log('has support');
+        }
+      }
+    }, {
       key: 'clickRec',
       value: function clickRec() {
         console.log('clicked record');
+        navigator.getUserMedia(clickSupport, startRecording, error);
       }
     }, {
       key: 'clickPauseRes',
@@ -55,6 +71,13 @@ if (window.FC === undefined) {
             'Recorder'
           ),
           React.createElement('video', { id: 'video', controls: true, autoPlay: true }),
+          React.createElement(
+            'button',
+            { id: 'supported', onClick: function onClick() {
+                _this2.clickSupport();
+              } },
+            'Support'
+          ),
           React.createElement(
             'button',
             { id: 'record', onClick: function onClick() {
