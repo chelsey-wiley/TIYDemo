@@ -8,16 +8,22 @@ if (window.FC === undefined) {window.FC = {};}
     "video": true,
     "audio": true
   };
-  
+
+
+
+
+
   navigator.getUserMedia =
   navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia ||
   null;
+  
+  var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
 
   class RecordingComponent extends React.Component {
 
-    startRecording(){
+    startRecording(stream){
       console.log('startRecording');
-      videoStream = stream;
+      var videoStream = stream;
       video.src = createSrc(stream);
       video.play();
     };
@@ -58,7 +64,9 @@ if (window.FC === undefined) {window.FC = {};}
       return (
         <div className="recorder-container">
           <h1>Recorder</h1>
+
           <video id="video" controls autoPlay></video>
+
           <button id="supported" onClick={() => {this.clickSupport();}}>Support</button>
 
           <button id="record" onClick={() => {this.clickRec();}}>Record</button>

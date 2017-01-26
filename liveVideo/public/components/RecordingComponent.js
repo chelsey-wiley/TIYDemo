@@ -22,6 +22,10 @@ if (window.FC === undefined) {
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || null;
 
+  var createSrc = window.URL ? window.URL.createObjectURL : function (stream) {
+    return stream;
+  };
+
   var RecordingComponent = function (_React$Component) {
     _inherits(RecordingComponent, _React$Component);
 
@@ -33,9 +37,9 @@ if (window.FC === undefined) {
 
     _createClass(RecordingComponent, [{
       key: "startRecording",
-      value: function startRecording() {
+      value: function startRecording(stream) {
         console.log('startRecording');
-        videoStream = stream;
+        var videoStream = stream;
         video.src = createSrc(stream);
         video.play();
       }
