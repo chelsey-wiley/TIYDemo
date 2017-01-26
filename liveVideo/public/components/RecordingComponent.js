@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -15,6 +15,11 @@ if (window.FC === undefined) {
 (function () {
   'use strict';
 
+  var constraints = {
+    "video": true,
+    "audio": true
+  };
+
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || null;
 
   var RecordingComponent = function (_React$Component) {
@@ -27,77 +32,87 @@ if (window.FC === undefined) {
     }
 
     _createClass(RecordingComponent, [{
-      key: 'clickSupport',
+      key: "startRecording",
+      value: function startRecording() {
+        console.log('startRecording');
+        videoStream = stream;
+        video.src = createSrc(stream);
+        video.play();
+      }
+    }, {
+      key: "error",
+      value: function error() {
+        console.log('error');
+      }
+    }, {
+      key: "clickSupport",
       value: function clickSupport() {
         console.log('clicked support');
         if (navigator.getUserMedia === null) {
           alert('Sorry! This will not work on your browser.');
           console.log('no support');
         } else {
-          video: true;
-          audio: true;
           console.log('has support');
         }
       }
     }, {
-      key: 'clickRec',
+      key: "clickRec",
       value: function clickRec() {
+        navigator.getUserMedia(constraints, this.startRecording, this.error);
         console.log('clicked record');
-        navigator.getUserMedia(clickSupport, startRecording, error);
       }
     }, {
-      key: 'clickPauseRes',
+      key: "clickPauseRes",
       value: function clickPauseRes() {
         console.log('clicked Pause/Res');
       }
     }, {
-      key: 'clickStop',
+      key: "clickStop",
       value: function clickStop() {
         console.log('clicked stop');
       }
     }, {
-      key: 'render',
+      key: "render",
       value: function render() {
         var _this2 = this;
 
         var videoStream = null;
-
         return React.createElement(
-          'div',
-          { className: 'recorder-container' },
+          "div",
+          { className: "recorder-container" },
           React.createElement(
-            'h1',
+            "h1",
             null,
-            'Recorder'
+            "Recorder"
           ),
-          React.createElement('video', { id: 'video', controls: true, autoPlay: true }),
+          React.createElement("video", { id: "video", controls: true, autoPlay: true }),
           React.createElement(
-            'button',
-            { id: 'supported', onClick: function onClick() {
+            "button",
+            { id: "supported", onClick: function onClick() {
                 _this2.clickSupport();
               } },
-            'Support'
+            "Support"
           ),
           React.createElement(
-            'button',
-            { id: 'record', onClick: function onClick() {
+            "button",
+            { id: "record", onClick: function onClick() {
                 _this2.clickRec();
               } },
-            'Record'
+            "Record"
           ),
           React.createElement(
-            'button',
-            { id: 'pauseRes', onClick: function onClick() {
+            "button",
+            { id: "pauseRes", onClick: function onClick() {
                 _this2.clickPauseRes();
               } },
-            'Pause'
+            "Pause"
           ),
           React.createElement(
-            'button',
-            { id: 'stop', onClick: function onClick() {
+            "button",
+            { id: "stop", onClick: function onClick() {
                 _this2.clickStop();
               } },
-            'Stop'
+            "Stop"
           )
         );
       }

@@ -4,11 +4,27 @@ if (window.FC === undefined) {window.FC = {};}
 (function() {
   'use strict';
 
+  var constraints = {
+    "video": true,
+    "audio": true
+  };
+  
   navigator.getUserMedia =
   navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia ||
   null;
 
   class RecordingComponent extends React.Component {
+
+    startRecording(){
+      console.log('startRecording');
+      videoStream = stream;
+      video.src = createSrc(stream);
+      video.play();
+    };
+
+    error(){
+      console.log('error');
+    };
 
     clickSupport(){
       console.log('clicked support');
@@ -17,15 +33,13 @@ if (window.FC === undefined) {window.FC = {};}
         console.log('no support');
       }
       else{
-        video: true;
-        audio: true;
         console.log('has support');
       }
     };
 
     clickRec(){
+      navigator.getUserMedia(constraints, this.startRecording, this.error);
       console.log ('clicked record');
-      navigator.getUserMedia(clickSupport, startRecording, error);
     };
 
     clickPauseRes(){
@@ -41,9 +55,6 @@ if (window.FC === undefined) {window.FC = {};}
 
     render(){
       var videoStream = null;
-
-
-
       return (
         <div className="recorder-container">
           <h1>Recorder</h1>
