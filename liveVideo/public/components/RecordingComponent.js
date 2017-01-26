@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -25,26 +25,56 @@ if (window.FC === undefined) {
     }
 
     _createClass(RecordingComponent, [{
-      key: "render",
+      key: 'clickRec',
+      value: function clickRec() {
+        console.log('clicked record');
+      }
+    }, {
+      key: 'clickPauseRes',
+      value: function clickPauseRes() {
+        console.log('clicked Pause/Res');
+      }
+    }, {
+      key: 'clickStop',
+      value: function clickStop() {
+        console.log('clicked stop');
+      }
+    }, {
+      key: 'render',
       value: function render() {
+        var _this2 = this;
+
+        var videoStream = null;
+
         return React.createElement(
-          "div",
-          { className: "recorder-container" },
+          'div',
+          { className: 'recorder-container' },
           React.createElement(
-            "h1",
+            'h1',
             null,
-            "Recorder"
+            'Recorder'
           ),
-          React.createElement("video", { controls: true, autoPlay: true }),
+          React.createElement('video', { id: 'video', controls: true, autoPlay: true }),
           React.createElement(
-            "button",
-            { id: "pauseRes" },
-            "Pause"
+            'button',
+            { id: 'record', onClick: function onClick() {
+                _this2.clickRec();
+              } },
+            'Record'
           ),
           React.createElement(
-            "button",
-            { id: "stop" },
-            "Stop"
+            'button',
+            { id: 'pauseRes', onClick: function onClick() {
+                _this2.clickPauseRes();
+              } },
+            'Pause'
+          ),
+          React.createElement(
+            'button',
+            { id: 'stop', onClick: function onClick() {
+                _this2.clickStop();
+              } },
+            'Stop'
           )
         );
       }
