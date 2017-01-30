@@ -25,17 +25,24 @@ if (window.FC === undefined) {window.FC = {};}
     //turn this into an if else statement with text content and toggle?
       console.log('startRecording function');
       this.getit(stream);
-      var recordedBlobs = [];
-      var videoStream = stream;
       var mediaRecorder = new MediaRecorder(stream);
-      console.log('this:', this)
       this.mediaRecorder = mediaRecorder;
 
       if (this.mediaRecorder.state !== 'recording'){
         console.log('Created MediaRecorder', mediaRecorder);
         this.mediaRecorder.start();
         console.log('MediaRecorder state:', this.mediaRecorder.state);
+        this.mediaRecorder.ondataavailable = this.handleDataAvailable;
       }
+    };
+
+    handleDataAvailable(stream) {
+      var recordedBlobs = [];
+      this.recordedBlobs = recordedBlobs;
+      if (stream.data && stream.data.size > 0) {
+        this.recordedBlobs.push(stream.data);
+      }
+      console.log('recordedBlobs', this.recordedBlobs)
     };
 
     error(){
