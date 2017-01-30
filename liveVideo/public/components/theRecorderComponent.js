@@ -13,42 +13,36 @@ if (window.FC === undefined) {
 }
 
 (function () {
-  var mountNode = document.querySelector('#react-root');
+  'use strict';
 
-  var AppComponent = function (_React$Component) {
-    _inherits(AppComponent, _React$Component);
+  var TheRecorderComponent = function (_React$Component) {
+    _inherits(TheRecorderComponent, _React$Component);
 
-    function AppComponent() {
-      _classCallCheck(this, AppComponent);
+    function TheRecorderComponent() {
+      _classCallCheck(this, TheRecorderComponent);
 
-      return _possibleConstructorReturn(this, (AppComponent.__proto__ || Object.getPrototypeOf(AppComponent)).apply(this, arguments));
+      return _possibleConstructorReturn(this, (TheRecorderComponent.__proto__ || Object.getPrototypeOf(TheRecorderComponent)).apply(this, arguments));
     }
 
-    _createClass(AppComponent, [{
+    _createClass(TheRecorderComponent, [{
       key: "render",
       value: function render() {
+
         return React.createElement(
           "div",
-          { className: "container" },
+          { className: "recording-container" },
           React.createElement(
-            "h2",
+            "h1",
             null,
-            " Recording in script JS"
-          ),
-          React.createElement(FC.RecordingComponent, null),
-          React.createElement(
-            "h2",
-            null,
-            "Youtube in script JS"
-          ),
-          React.createElement(FC.YoutubeComponent, null)
+            "Recorder"
+          )
         );
       }
     }]);
 
-    return AppComponent;
+    return TheRecorderComponent;
   }(React.Component);
 
-  ReactDOM.render(React.createElement(AppComponent, null), mountNode);
+  FC.TheRecorderComponent = TheRecorderComponent;
 })();
-//# sourceMappingURL=script.js.map
+//# sourceMappingURL=TheRecorderComponent.js.map

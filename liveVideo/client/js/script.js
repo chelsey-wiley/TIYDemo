@@ -7,7 +7,7 @@ class AppComponent extends React.Component {
   render() {
     return <div className="container">
 
-      <h2> Recorder in script JS</h2>
+      <h2> Recording in script JS</h2>
       <FC.RecordingComponent/>
 
       <h2>Youtube in script JS</h2>

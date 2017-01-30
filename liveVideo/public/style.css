@@ -57,6 +57,7 @@ table {
   border: 1px solid green; }
 
 video {
-  background-color: black; }
+  background-color: black;
+  margin: 40px; }
 
 /*# sourceMappingURL=style.css.map */

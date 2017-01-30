@@ -22,9 +22,12 @@ if (window.FC === undefined) {
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || null;
 
+  var mediaSource = new MediaSource();
   var createSrc = window.URL ? window.URL.createObjectURL : function (stream) {
     return stream;
   };
+  var recordingHere = document.querySelector('#recordingHere');
+  var video = document.querySelector('#video');
 
   var RecordingComponent = function (_React$Component) {
     _inherits(RecordingComponent, _React$Component);
@@ -38,10 +41,13 @@ if (window.FC === undefined) {
     _createClass(RecordingComponent, [{
       key: "startRecording",
       value: function startRecording(stream) {
-        console.log('startRecording');
+        console.log('startRecording function');
+        var recordedBlobs = [];
         var videoStream = stream;
-        video.src = createSrc(stream);
-        video.play();
+        var mediaRecorder = new MediaRecorder(stream);
+        console.log('Created MediaRecorder', mediaRecorder);
+        mediaRecorder.start();
+        console.log('MediaRecorder state:', mediaRecorder.state);
       }
     }, {
       key: "error",
@@ -80,6 +86,9 @@ if (window.FC === undefined) {
       key: "clickStop",
       value: function clickStop() {
         console.log('clicked stop');
+        mediaRecorder.stop();
+        console.log(mediaRecorder.state);
+        console.log("recorder stopped");
       }
     }, {
       key: "render",
@@ -95,6 +104,7 @@ if (window.FC === undefined) {
             null,
             "Recorder"
           ),
+          React.createElement("video", { id: "recordingHere", autoPlay: true, muted: true }),
           React.createElement("video", { id: "video", controls: true, autoPlay: true }),
           React.createElement(
             "button",
