@@ -17,21 +17,31 @@ if (window.FC === undefined) {window.FC = {};}
 
   var mediaSource = new MediaSource();
   var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
-  var recordingHere= document.querySelector('#recordingHere');
-  var video = document.querySelector('#video');
 
   class RecordingComponent extends React.Component {
 
 
     startRecording(stream){
+    //turn this into an if else statement with text content and toggle?
       console.log('startRecording function');
       var recordedBlobs = [];
       var videoStream = stream;
       var mediaRecorder = new MediaRecorder(stream);
-      console.log('Created MediaRecorder', mediaRecorder);
-      mediaRecorder.start();
-      console.log('MediaRecorder state:', mediaRecorder.state);
+
+      //if else based on state?
+      if (mediaRecorder.state === 'recording'){
+        console.log('beans');
+        mediaRecorder.stop();
+        console.log('MediaRecorder stopped', mediaRecorder.state);
+      }
+      else{
+        console.log('Created MediaRecorder', mediaRecorder);
+        mediaRecorder.start();
+        console.log('MediaRecorder state:', mediaRecorder.state);
+      }
     };
+
+
 
     error(){
       console.log('error');
@@ -47,9 +57,6 @@ if (window.FC === undefined) {window.FC = {};}
         console.log('has support');
       }
     };
-
-
-
 
 
     clickRec(){
