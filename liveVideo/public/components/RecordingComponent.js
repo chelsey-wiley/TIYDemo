@@ -55,12 +55,15 @@ if (window.FC === undefined) {
     }, {
       key: "handleDataAvailable",
       value: function handleDataAvailable(stream) {
-        var recordedBlobs = [];
-        this.recordedBlobs = recordedBlobs;
+
+        if (this.recordedBlobs === undefined) {
+          this.recordedBlobs = [];
+        };
+        console.log('this', this);
         if (stream.data && stream.data.size > 0) {
           this.recordedBlobs.push(stream.data);
         }
-        console.log('recordedBlobs', this.recordedBlobs);
+        console.log('recordedBlobs');
       }
     }, {
       key: "error",
@@ -107,12 +110,20 @@ if (window.FC === undefined) {
         console.log('clicked resume');
       }
     }, {
+      key: "clickPlay",
+      value: function clickPlay() {
+        console.log('clicked play');
+      }
+    }, {
       key: "clickStop",
       value: function clickStop() {
         console.log('clicked stop');
         this.mediaRecorder.stop();
         console.log("recorder stopped");
         console.log('mediaRecorder state:', this.mediaRecorder.state);
+        console.log("the blobs", this.mediaRecorder.recordedBlobs);
+        var superBlob = new Blob(this.mediaRecorder.recordedBlobs, { type: 'video/webm' });
+        console.log('superBlob:', superBlob);
       }
     }, {
       key: "render",
@@ -163,6 +174,13 @@ if (window.FC === undefined) {
                 _this3.clickStop();
               } },
             "Stop"
+          ),
+          React.createElement(
+            "button",
+            { id: "play", onClick: function onClick() {
+                _this3.clickPlay();
+              } },
+            "Play"
           )
         );
       }

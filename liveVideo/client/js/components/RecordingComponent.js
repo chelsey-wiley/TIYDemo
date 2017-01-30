@@ -37,12 +37,15 @@ if (window.FC === undefined) {window.FC = {};}
     };
 
     handleDataAvailable(stream) {
-      var recordedBlobs = [];
-      this.recordedBlobs = recordedBlobs;
+
+      if(this.recordedBlobs === undefined){
+        this.recordedBlobs = [];
+      };
+        console.log('this', this)
       if (stream.data && stream.data.size > 0) {
         this.recordedBlobs.push(stream.data);
       }
-      console.log('recordedBlobs', this.recordedBlobs)
+      console.log('recordedBlobs')
     };
 
     error(){
@@ -80,11 +83,18 @@ if (window.FC === undefined) {window.FC = {};}
       console.log ('clicked resume');
     };
 
+    clickPlay(){
+      console.log('clicked play');
+    };
+
     clickStop(){
       console.log ('clicked stop');
       this.mediaRecorder.stop();
       console.log("recorder stopped");
       console.log('mediaRecorder state:', this.mediaRecorder.state);
+      console.log("the blobs", this.mediaRecorder.recordedBlobs)
+      var superBlob = new Blob(this.mediaRecorder.recordedBlobs, {type: 'video/webm'});
+      console.log('superBlob:', superBlob)
     };
 
 
@@ -107,6 +117,9 @@ if (window.FC === undefined) {window.FC = {};}
           <button id="resume" onClick={() => {this.clickResume();}}>Resume</button>
 
           <button id="stop" onClick={() => {this.clickStop();}}>Stop</button>
+
+          <button id="play" onClick={() => {this.clickPlay();}}>Play</button>
+
 
         </div>
       )
