@@ -37,23 +37,21 @@ if (window.FC === undefined) {
     }
 
     _createClass(RecordingComponent, [{
-      key: "startRecording",
-      value: function startRecording(stream) {
+      key: "theRecording",
+      value: function theRecording(stream) {
         //turn this into an if else statement with text content and toggle?
         console.log('startRecording function');
+        this.getit(stream);
         var recordedBlobs = [];
         var videoStream = stream;
         var mediaRecorder = new MediaRecorder(stream);
+        console.log('this:', this);
+        this.mediaRecorder = mediaRecorder;
 
-        //if else based on state?
-        if (mediaRecorder.state === 'recording') {
-          console.log('beans');
-          mediaRecorder.stop();
-          console.log('MediaRecorder stopped', mediaRecorder.state);
-        } else {
+        if (this.mediaRecorder.state !== 'recording') {
           console.log('Created MediaRecorder', mediaRecorder);
-          mediaRecorder.start();
-          console.log('MediaRecorder state:', mediaRecorder.state);
+          this.mediaRecorder.start();
+          console.log('MediaRecorder state:', this.mediaRecorder.state);
         }
       }
     }, {
@@ -73,9 +71,20 @@ if (window.FC === undefined) {
         }
       }
     }, {
+      key: "getit",
+      value: function getit(stream) {
+        var videoStream = stream;
+        video.src = createSrc(stream);
+        video.play();
+      }
+    }, {
       key: "clickRec",
       value: function clickRec() {
-        navigator.getUserMedia(constraints, this.startRecording, this.error);
+        var _this2 = this;
+
+        navigator.getUserMedia(constraints, function (stream) {
+          _this2.theRecording(stream);
+        }, this.error);
         console.log('clicked record');
       }
     }, {
@@ -93,14 +102,14 @@ if (window.FC === undefined) {
       key: "clickStop",
       value: function clickStop() {
         console.log('clicked stop');
-        mediaRecorder.stop();
-        console.log(mediaRecorder.state);
+        this.mediaRecorder.stop();
         console.log("recorder stopped");
+        console.log('mediaRecorder state:', this.mediaRecorder.state);
       }
     }, {
       key: "render",
       value: function render() {
-        var _this2 = this;
+        var _this3 = this;
 
         var videoStream = null;
         return React.createElement(
@@ -111,40 +120,39 @@ if (window.FC === undefined) {
             null,
             "Recorder"
           ),
-          React.createElement("video", { id: "recordingHere", autoPlay: true, muted: true }),
           React.createElement("video", { id: "video", controls: true, autoPlay: true }),
           React.createElement(
             "button",
             { id: "supported", onClick: function onClick() {
-                _this2.clickSupport();
+                _this3.clickSupport();
               } },
             "Support"
           ),
           React.createElement(
             "button",
             { id: "record", onClick: function onClick() {
-                _this2.clickRec();
+                _this3.clickRec();
               } },
             "Record"
           ),
           React.createElement(
             "button",
             { id: "pause", onClick: function onClick() {
-                _this2.clickPause();
+                _this3.clickPause();
               } },
             "Pause"
           ),
           React.createElement(
             "button",
             { id: "resume", onClick: function onClick() {
-                _this2.clickResume();
+                _this3.clickResume();
               } },
             "Resume"
           ),
           React.createElement(
             "button",
             { id: "stop", onClick: function onClick() {
-                _this2.clickStop();
+                _this3.clickStop();
               } },
             "Stop"
           )

@@ -21,27 +21,22 @@ if (window.FC === undefined) {window.FC = {};}
   class RecordingComponent extends React.Component {
 
 
-    startRecording(stream){
+    theRecording(stream){
     //turn this into an if else statement with text content and toggle?
       console.log('startRecording function');
+      this.getit(stream);
       var recordedBlobs = [];
       var videoStream = stream;
       var mediaRecorder = new MediaRecorder(stream);
+      console.log('this:', this)
+      this.mediaRecorder = mediaRecorder;
 
-      //if else based on state?
-      if (mediaRecorder.state === 'recording'){
-        console.log('beans');
-        mediaRecorder.stop();
-        console.log('MediaRecorder stopped', mediaRecorder.state);
-      }
-      else{
+      if (this.mediaRecorder.state !== 'recording'){
         console.log('Created MediaRecorder', mediaRecorder);
-        mediaRecorder.start();
-        console.log('MediaRecorder state:', mediaRecorder.state);
+        this.mediaRecorder.start();
+        console.log('MediaRecorder state:', this.mediaRecorder.state);
       }
     };
-
-
 
     error(){
       console.log('error');
@@ -58,9 +53,14 @@ if (window.FC === undefined) {window.FC = {};}
       }
     };
 
+   getit(stream){
+     var videoStream = stream;
+     video.src = createSrc(stream);
+     video.play();
+    }
 
     clickRec(){
-      navigator.getUserMedia(constraints, this.startRecording, this.error);
+      navigator.getUserMedia(constraints, (stream)=>{this.theRecording(stream)}, this.error);
       console.log ('clicked record');
     };
 
@@ -75,9 +75,9 @@ if (window.FC === undefined) {window.FC = {};}
 
     clickStop(){
       console.log ('clicked stop');
-      mediaRecorder.stop();
-      console.log(mediaRecorder.state);
+      this.mediaRecorder.stop();
       console.log("recorder stopped");
+      console.log('mediaRecorder state:', this.mediaRecorder.state);
     };
 
 
@@ -88,8 +88,6 @@ if (window.FC === undefined) {window.FC = {};}
       return (
         <div className="recorder-container">
           <h1>Recorder</h1>
-
-          <video id="recordingHere" autoPlay muted></video>
 
           <video id="video" controls autoPlay></video>
 
