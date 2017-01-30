@@ -59,11 +59,9 @@ if (window.FC === undefined) {
         if (this.recordedBlobs === undefined) {
           this.recordedBlobs = [];
         };
-        console.log('this', this);
         if (stream.data && stream.data.size > 0) {
           this.recordedBlobs.push(stream.data);
         }
-        console.log('recordedBlobs');
       }
     }, {
       key: "error",
@@ -113,6 +111,7 @@ if (window.FC === undefined) {
       key: "clickPlay",
       value: function clickPlay() {
         console.log('clicked play');
+        video.src = window.URL.createObjectURL(this.superBlob);
       }
     }, {
       key: "clickStop",
@@ -123,7 +122,8 @@ if (window.FC === undefined) {
         console.log('mediaRecorder state:', this.mediaRecorder.state);
         console.log("the blobs", this.mediaRecorder.recordedBlobs);
         var superBlob = new Blob(this.mediaRecorder.recordedBlobs, { type: 'video/webm' });
-        console.log('superBlob:', superBlob);
+        this.superBlob = superBlob;
+        console.log('superBlob:', this.superBlob);
       }
     }, {
       key: "render",
