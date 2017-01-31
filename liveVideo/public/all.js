@@ -57,7 +57,7 @@ if (window.MR === undefined) {
   'use strict';
 
   var constraints = {
-    "video": false,
+    "video": true,
     "audio": true
   };
 
@@ -78,33 +78,6 @@ if (window.MR === undefined) {
     }
 
     _createClass(EnglishRecordingComponent, [{
-      key: "theRecording",
-      value: function theRecording(stream) {
-        //turn this into an if else statement with text content and toggle?
-        console.log('startRecording function');
-        this.getit(stream);
-        var mediaRecorder = new MediaRecorder(stream);
-        this.mediaRecorder = mediaRecorder;
-
-        if (this.mediaRecorder.state !== 'recording') {
-          console.log('Created MediaRecorder', mediaRecorder);
-          this.mediaRecorder.start();
-          console.log('MediaRecorder state:', this.mediaRecorder.state);
-          this.mediaRecorder.ondataavailable = this.handleDataAvailable;
-        }
-      }
-    }, {
-      key: "handleDataAvailable",
-      value: function handleDataAvailable(stream) {
-
-        if (this.recordedBlobs === undefined) {
-          this.recordedBlobs = [];
-        };
-        if (stream.data && stream.data.size > 0) {
-          this.recordedBlobs.push(stream.data);
-        }
-      }
-    }, {
       key: "error",
       value: function error() {
         console.log('error');
@@ -121,8 +94,8 @@ if (window.MR === undefined) {
         }
       }
     }, {
-      key: "getit",
-      value: function getit(stream) {
+      key: "getStream",
+      value: function getStream(stream) {
         var videoStream = stream;
         video.src = createSrc(stream);
         video.play();
@@ -138,21 +111,28 @@ if (window.MR === undefined) {
         console.log('clicked record');
       }
     }, {
-      key: "clickPause",
-      value: function clickPause() {
-        console.log('clicked Pause');
-        video.pause();
+      key: "theRecording",
+      value: function theRecording(stream) {
+        console.log('startRecording function');
+        this.getStream(stream);
+        var mediaRecorder = new MediaRecorder(stream);
+        this.mediaRecorder = mediaRecorder;
+        if (this.mediaRecorder.state !== 'recording') {
+          console.log('Created MediaRecorder', mediaRecorder);
+          this.mediaRecorder.start();
+          console.log('MediaRecorder state:', this.mediaRecorder.state);
+          this.mediaRecorder.ondataavailable = this.handleDataAvailable;
+        }
       }
     }, {
-      key: "clickResume",
-      value: function clickResume() {
-        console.log('clicked resume');
-      }
-    }, {
-      key: "clickPlay",
-      value: function clickPlay() {
-        console.log('clicked play');
-        video.src = window.URL.createObjectURL(this.superBlob);
+      key: "handleDataAvailable",
+      value: function handleDataAvailable(stream) {
+        if (this.recordedBlobs === undefined) {
+          this.recordedBlobs = [];
+        };
+        if (stream.data && stream.data.size > 0) {
+          this.recordedBlobs.push(stream.data);
+        }
       }
     }, {
       key: "clickStop",
@@ -165,6 +145,25 @@ if (window.MR === undefined) {
         var superBlob = new Blob(this.mediaRecorder.recordedBlobs, { type: 'video/webm' });
         this.superBlob = superBlob;
         console.log('superBlob:', this.superBlob);
+      }
+    }, {
+      key: "clickPlay",
+      value: function clickPlay() {
+        console.log('clicked play');
+        video.src = window.URL.createObjectURL(this.superBlob);
+      }
+    }, {
+      key: "clickDownload",
+      value: function clickDownload() {
+        console.log('clicked download');
+
+        var url = window.URL.createObjectURL(this.superBlob);
+        var a = document.createElement('a');
+        // a.style.display = 'none';
+        a.href = url;
+        a.download = 'SignLanguageVideo.webm';
+        document.body.appendChild(a);
+        a.click();
       }
     }, {
       key: "render",
@@ -211,51 +210,48 @@ if (window.MR === undefined) {
             { className: "recorder-container" },
             React.createElement(
               "h1",
-              null,
-              "Recorder"
+              { className: "page-title" },
+              "Sign Language Recorder"
             ),
             React.createElement("video", { id: "video", controls: true, autoPlay: true }),
             React.createElement(
-              "button",
-              { id: "supported", onClick: function onClick() {
-                  _this3.clickSupport();
-                } },
-              "Support"
-            ),
-            React.createElement(
-              "button",
-              { id: "record", onClick: function onClick() {
-                  _this3.clickRec();
-                } },
-              "Record"
-            ),
-            React.createElement(
-              "button",
-              { id: "pause", onClick: function onClick() {
-                  _this3.clickPause();
-                } },
-              "Pause"
-            ),
-            React.createElement(
-              "button",
-              { id: "resume", onClick: function onClick() {
-                  _this3.clickResume();
-                } },
-              "Resume"
-            ),
-            React.createElement(
-              "button",
-              { id: "stop", onClick: function onClick() {
-                  _this3.clickStop();
-                } },
-              "Stop"
-            ),
-            React.createElement(
-              "button",
-              { id: "play", onClick: function onClick() {
-                  _this3.clickPlay();
-                } },
-              "Play"
+              "div",
+              { className: "video-buttons" },
+              React.createElement(
+                "button",
+                { id: "supported", onClick: function onClick() {
+                    _this3.clickSupport();
+                  } },
+                "Support"
+              ),
+              React.createElement(
+                "button",
+                { id: "record", onClick: function onClick() {
+                    _this3.clickRec();
+                  } },
+                "Record"
+              ),
+              React.createElement(
+                "button",
+                { id: "stop", onClick: function onClick() {
+                    _this3.clickStop();
+                  } },
+                "Stop"
+              ),
+              React.createElement(
+                "button",
+                { id: "play", onClick: function onClick() {
+                    _this3.clickPlay();
+                  } },
+                "Play"
+              ),
+              React.createElement(
+                "button",
+                { id: "download", onClick: function onClick() {
+                    _this3.clickDownload();
+                  } },
+                "Download"
+              )
             )
           ),
           React.createElement(MR.YoutubeComponent, null)
@@ -315,9 +311,13 @@ console.log('home component');
               'div',
               null,
               React.createElement(
-                ReactRouter.Link,
-                { to: '/EnglishRecordingComponent' },
-                'English'
+                'button',
+                null,
+                React.createElement(
+                  ReactRouter.Link,
+                  { to: '/EnglishRecordingComponent' },
+                  'English'
+                )
               )
             )
           )
@@ -702,7 +702,7 @@ if (window.MR === undefined) {
               null,
               React.createElement(
                 ReactRouter.Link,
-                { to: '/RecordingComponent' },
+                { to: '/SignLanguageRecordingComponent' },
                 "Sign Language"
               )
             ),
@@ -828,9 +828,14 @@ if (window.MR === undefined) {
     _createClass(YoutubeComponent, [{
       key: 'clicky',
       value: function clicky() {
-        var page = 1;
-        console.log('the input is', this.theInput, this.theInput.value, 'the page is', page);
-        this.theData(this.theInput.value) + "&page" + page;
+        console.log('the input is', this.theInput.value, 'the page is');
+        this.theData(this.theInput.value);
+      }
+    }, {
+      key: 'pageUp',
+      value: function pageUp() {
+        console.log('paging');
+        this.theData('the data is:', this.theInput.value) + "&pageToken=CAoQAA";
       }
     }, {
       key: 'keyUp',
@@ -846,7 +851,7 @@ if (window.MR === undefined) {
         var _this2 = this;
 
         $.ajax({
-          url: "https://www.googleapis.com/youtube/v3/search?q=" + this.theInput.value + "&q=YouTube+Data+API" + "&type=video" + "&videoCaption=closedCaption" + "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" + "&part=snippet"
+          url: "https://www.googleapis.com/youtube/v3/search?q=" + this.theInput.value + "&q=YouTube+Data+API" + "&maxResults=10" + "&type=video" + "&videoCaption=closedCaption" + "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" + "&part=snippet"
         }).done(function (data) {
           console.log('got the data', data);
           _this2.setState({
@@ -879,6 +884,13 @@ if (window.MR === undefined) {
                   _this3.clicky();
                 } },
               'enter'
+            ),
+            React.createElement(
+              'button',
+              { onClick: function onClick() {
+                  _this3.pageUp();
+                } },
+              'page up'
             )
           ),
           React.createElement(

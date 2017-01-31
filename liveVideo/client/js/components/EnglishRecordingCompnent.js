@@ -4,48 +4,18 @@ if (window.MR === undefined) {window.MR = {};}
   'use strict';
 
   var constraints = {
-    "video": false,
-    "audio": true,
+    "video": true,
+    "audio": true
   };
-
 
   navigator.getUserMedia =
   navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia ||
   null;
 
-
   var mediaSource = new MediaSource();
   var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
 
   class EnglishRecordingComponent extends React.Component {
-
-
-    theRecording(stream){
-    //turn this into an if else statement with text content and toggle?
-      console.log('startRecording function');
-      this.getit(stream);
-      var mediaRecorder = new MediaRecorder(stream);
-      this.mediaRecorder = mediaRecorder;
-
-      if (this.mediaRecorder.state !== 'recording'){
-        console.log('Created MediaRecorder', mediaRecorder);
-        this.mediaRecorder.start();
-        console.log('MediaRecorder state:', this.mediaRecorder.state);
-        this.mediaRecorder.ondataavailable = this.handleDataAvailable;
-      }
-    };
-
-    handleDataAvailable(stream) {
-
-      if(this.recordedBlobs === undefined){
-        this.recordedBlobs = [];
-      };
-      if (stream.data && stream.data.size > 0) {
-        this.recordedBlobs.push(stream.data);
-      }
-    };
-
-
 
     error(){
       console.log('error');
@@ -62,72 +32,90 @@ if (window.MR === undefined) {window.MR = {};}
       }
     };
 
-   getit(stream){
+   getStream(stream){
      var videoStream = stream;
      video.src = createSrc(stream);
      video.play();
-    }
+   };
 
     clickRec(){
       navigator.getUserMedia(constraints, (stream)=>{this.theRecording(stream)}, this.error);
       console.log ('clicked record');
     };
 
-    clickPause(){
-      console.log ('clicked Pause');
-      video.pause();
+    theRecording(stream){
+      console.log('startRecording function');
+      this.getStream(stream);
+      var mediaRecorder = new MediaRecorder(stream);
+      this.mediaRecorder = mediaRecorder;
+      if (this.mediaRecorder.state !== 'recording'){
+        console.log('Created MediaRecorder', mediaRecorder);
+        this.mediaRecorder.start();
+        console.log('MediaRecorder state:', this.mediaRecorder.state);
+        this.mediaRecorder.ondataavailable = this.handleDataAvailable;
+      }
     };
 
-    clickResume(){
-      console.log ('clicked resume');
+    handleDataAvailable(stream) {
+     if(this.recordedBlobs === undefined){
+       this.recordedBlobs = [];
+     };
+     if (stream.data && stream.data.size > 0) {
+       this.recordedBlobs.push(stream.data);
+     }
     };
+
+
+    clickStop(){
+       console.log ('clicked stop');
+       this.mediaRecorder.stop();
+       console.log("recorder stopped");
+       console.log('mediaRecorder state:', this.mediaRecorder.state);
+       console.log("the blobs", this.mediaRecorder.recordedBlobs)
+       var superBlob = new Blob(this.mediaRecorder.recordedBlobs, {type: 'video/webm'});
+       this.superBlob = superBlob;
+       console.log('superBlob:', this.superBlob)
+     };
 
     clickPlay(){
       console.log('clicked play');
       video.src = window.URL.createObjectURL(this.superBlob);
     };
 
-    clickStop(){
-      console.log ('clicked stop');
-      this.mediaRecorder.stop();
-      console.log("recorder stopped");
-      console.log('mediaRecorder state:', this.mediaRecorder.state);
-      console.log("the blobs", this.mediaRecorder.recordedBlobs)
-      var superBlob = new Blob(this.mediaRecorder.recordedBlobs, {type: 'video/webm'});
-      this.superBlob = superBlob;
-      console.log('superBlob:', this.superBlob)
-    };
+    clickDownload(){
+      console.log('clicked download');
 
+      var url = window.URL.createObjectURL(this.superBlob);
+      var a = document.createElement('a');
+      // a.style.display = 'none';
+      a.href = url;
+      a.download = 'SignLanguageVideo.webm';
+      document.body.appendChild(a);
+      a.click();
+    };
 
 
 
     render(){
       var videoStream = null;
       return ( <div className="container">
-        <header>
-          <div><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></div>
-          <div><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></div>
-          <div><ReactRouter.Link to={'/'}>Home</ReactRouter.Link></div>
-        </header>
+      <header>
+        <div><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></div>
+        <div><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></div>
+        <div><ReactRouter.Link to={'/'}>Home</ReactRouter.Link></div>
+      </header>
           <div className="recorder-container">
-            <h1>Recorder</h1>
-
+            <h1 className="page-title">Sign Language Recorder</h1>
             <video id="video" controls autoPlay></video>
-
-            <button id="supported" onClick={() => {this.clickSupport();}}>Support</button>
-
-            <button id="record" onClick={() => {this.clickRec();}}>Record</button>
-
-            <button id="pause" onClick={() => {this.clickPause();}}>Pause</button>
-
-            <button id="resume" onClick={() => {this.clickResume();}}>Resume</button>
-
-            <button id="stop" onClick={() => {this.clickStop();}}>Stop</button>
-
-            <button id="play" onClick={() => {this.clickPlay();}}>Play</button>
-
+            <div className="video-buttons">
+              <button id="supported" onClick={() => {this.clickSupport();}}>Support</button>
+              <button id="record" onClick={() => {this.clickRec();}}>Record</button>
+              <button id="stop" onClick={() => {this.clickStop();}}>Stop</button>
+              <button id="play" onClick={() => {this.clickPlay();}}>Play</button>
+              <button id="download" onClick={()=> {this.clickDownload();}}>Download</button>
             </div>
-            <MR.YoutubeComponent/>
+          </div>
+          <MR.YoutubeComponent/>
         </div>
       )
 

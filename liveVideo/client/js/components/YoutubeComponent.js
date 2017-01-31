@@ -19,11 +19,15 @@ if (window.MR === undefined) {window.MR = {};}
     }
 
     clicky(){
-      var page = 1;
-      console.log('the input is', this.theInput, this.theInput.value, 'the page is', page);
-      this.theData(this.theInput.value) + "&page" + page;
-
+      console.log('the input is', this.theInput.value, 'the page is');
+      this.theData(this.theInput.value);
     }
+
+    pageUp(){
+      console.log('paging');
+      this.theData('the data is:', this.theInput.value) +
+     "&pageToken=CAoQAA";
+   };
 
     keyUp(evt) {
       console.log(evt.keyCode, evt.target);
@@ -37,6 +41,7 @@ if (window.MR === undefined) {window.MR = {};}
         url: "https://www.googleapis.com/youtube/v3/search?q=" +
           this.theInput.value +
           "&q=YouTube+Data+API" +
+          "&maxResults=10" +
           "&type=video" +
           "&videoCaption=closedCaption" +
           "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" +
@@ -57,7 +62,8 @@ if (window.MR === undefined) {window.MR = {};}
           <iframe name= "iframeName" className="iframeName"></iframe>
           <div className="search-bar">
               <input placeholder ="search" onKeyUp={(evt) => {this.keyUp(evt); }} ref={(theDomElement) => {this.theInput = theDomElement;}}/>
-              <button onClick={() => {this.clicky(); }}>enter</button>
+              <button onClick={() => {this.clicky();}}>enter</button>
+              <button onClick={() => {this.pageUp();}}>page up</button>
           </div>
 
 

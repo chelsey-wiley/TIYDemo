@@ -8,7 +8,7 @@ class HomeComponent extends React.Component {
     return <div className="container">
     <header>
       <div><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></div>
-      <div><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></div>
+      <div><button><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></button></div>
     </header>
     </div>;
   }
