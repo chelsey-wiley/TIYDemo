@@ -687,6 +687,19 @@ if (window.MR === undefined) {
         console.log('superBlob:', this.superBlob);
       }
     }, {
+      key: "clickDownload",
+      value: function clickDownload() {
+        console.log('clicked download');
+
+        var url = window.URL.createObjectURL(this.superBlob);
+        var a = document.createElement('a');
+        // a.style.display = 'none';
+        a.href = url;
+        a.download = 'SignLanguageVideo.webm';
+        document.body.appendChild(a);
+        a.click();
+      }
+    }, {
       key: "render",
       value: function render() {
         var _this3 = this;
@@ -776,6 +789,13 @@ if (window.MR === undefined) {
                   _this3.clickPlay();
                 } },
               "Play"
+            ),
+            React.createElement(
+              "button",
+              { id: "download", onClick: function onClick() {
+                  _this3.clickDownload();
+                } },
+              "Download"
             )
           ),
           React.createElement(MR.YoutubeComponent, null)

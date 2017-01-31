@@ -98,6 +98,17 @@ if (window.MR === undefined) {window.MR = {};}
       console.log('superBlob:', this.superBlob)
     };
 
+    clickDownload(){
+      console.log('clicked download');
+
+      var url = window.URL.createObjectURL(this.superBlob);
+      var a = document.createElement('a');
+      // a.style.display = 'none';
+      a.href = url;
+      a.download = 'SignLanguageVideo.webm';
+      document.body.appendChild(a);
+      a.click();
+    }
 
 
 
@@ -125,6 +136,8 @@ if (window.MR === undefined) {window.MR = {};}
             <button id="stop" onClick={() => {this.clickStop();}}>Stop</button>
 
             <button id="play" onClick={() => {this.clickPlay();}}>Play</button>
+
+            <button id="download" onClick={()=> {this.clickDownload();}}>Download</button>
 
             </div>
             <MR.YoutubeComponent/>
