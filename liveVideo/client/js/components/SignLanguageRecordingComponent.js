@@ -100,9 +100,8 @@ if (window.MR === undefined) {window.MR = {};}
       var videoStream = null;
       return ( <div className="container">
       <header>
-        <div><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></div>
-        <div><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></div>
-        <div><ReactRouter.Link to={'/'}>Home</ReactRouter.Link></div>
+        <div><button className="Button-to-ASL"><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></button></div>
+        <div><button className="Button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></button></div>
       </header>
           <div className="recorder-container">
             <h1 className="page-title">Sign Language Recorder</h1>

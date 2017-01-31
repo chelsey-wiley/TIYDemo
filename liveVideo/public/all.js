@@ -181,27 +181,26 @@ if (window.MR === undefined) {
               "div",
               null,
               React.createElement(
-                ReactRouter.Link,
-                { to: '/SignLanguageRecordingComponent' },
-                "Sign Language"
+                "button",
+                { className: "Button-to-ASL" },
+                React.createElement(
+                  ReactRouter.Link,
+                  { to: '/SignLanguageRecordingComponent' },
+                  "Sign Language"
+                )
               )
             ),
             React.createElement(
               "div",
               null,
               React.createElement(
-                ReactRouter.Link,
-                { to: '/EnglishRecordingComponent' },
-                "English"
-              )
-            ),
-            React.createElement(
-              "div",
-              null,
-              React.createElement(
-                ReactRouter.Link,
-                { to: '/' },
-                "Home"
+                "button",
+                { className: "Button-to-English" },
+                React.createElement(
+                  ReactRouter.Link,
+                  { to: '/EnglishRecordingComponent' },
+                  "English"
+                )
               )
             )
           ),
@@ -264,7 +263,7 @@ if (window.MR === undefined) {
 
   MR.EnglishRecordingComponent = EnglishRecordingComponent;
 })();
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -289,35 +288,45 @@ console.log('home component');
     }
 
     _createClass(HomeComponent, [{
-      key: 'render',
+      key: "render",
       value: function render() {
 
         return React.createElement(
-          'div',
-          { className: 'container' },
+          "div",
+          { className: "container" },
           React.createElement(
-            'header',
+            "h1",
+            { className: "indexH1" },
+            "Language Evaluator"
+          ),
+          React.createElement(
+            "h2",
+            { className: "indexH2" },
+            "Which Language would you like Evaluated"
+          ),
+          React.createElement(
+            "div",
             null,
             React.createElement(
-              'div',
-              null,
+              "button",
+              { className: "Button-to-ASL" },
               React.createElement(
                 ReactRouter.Link,
                 { to: '/SignLanguageRecordingComponent' },
-                'Sign Language'
+                "Sign Language"
               )
-            ),
+            )
+          ),
+          React.createElement(
+            "div",
+            null,
             React.createElement(
-              'div',
-              null,
+              "button",
+              { className: "Button-to-English" },
               React.createElement(
-                'button',
-                null,
-                React.createElement(
-                  ReactRouter.Link,
-                  { to: '/EnglishRecordingComponent' },
-                  'English'
-                )
+                ReactRouter.Link,
+                { to: '/EnglishRecordingComponent' },
+                "English"
               )
             )
           )
@@ -701,27 +710,26 @@ if (window.MR === undefined) {
               "div",
               null,
               React.createElement(
-                ReactRouter.Link,
-                { to: '/SignLanguageRecordingComponent' },
-                "Sign Language"
+                "button",
+                { className: "Button-to-ASL" },
+                React.createElement(
+                  ReactRouter.Link,
+                  { to: '/SignLanguageRecordingComponent' },
+                  "Sign Language"
+                )
               )
             ),
             React.createElement(
               "div",
               null,
               React.createElement(
-                ReactRouter.Link,
-                { to: '/EnglishRecordingComponent' },
-                "English"
-              )
-            ),
-            React.createElement(
-              "div",
-              null,
-              React.createElement(
-                ReactRouter.Link,
-                { to: '/' },
-                "Home"
+                "button",
+                { className: "Button-to-English" },
+                React.createElement(
+                  ReactRouter.Link,
+                  { to: '/EnglishRecordingComponent' },
+                  "English"
+                )
               )
             )
           ),
