@@ -11,23 +11,22 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 if (window.MR === undefined) {
   window.MR = {};
 }
-
+console.log('home component');
 (function () {
-  var mountNode = document.querySelector('#react-root');
-  console.log('scriptJS');
+  var HomeComponent = function (_React$Component) {
+    _inherits(HomeComponent, _React$Component);
 
-  var AppComponent = function (_React$Component) {
-    _inherits(AppComponent, _React$Component);
+    function HomeComponent() {
+      _classCallCheck(this, HomeComponent);
 
-    function AppComponent() {
-      _classCallCheck(this, AppComponent);
-
-      return _possibleConstructorReturn(this, (AppComponent.__proto__ || Object.getPrototypeOf(AppComponent)).apply(this, arguments));
+      return _possibleConstructorReturn(this, (HomeComponent.__proto__ || Object.getPrototypeOf(HomeComponent)).apply(this, arguments));
     }
 
-    _createClass(AppComponent, [{
+    _createClass(HomeComponent, [{
       key: 'render',
       value: function render() {
+        console.log('home component');
+
         return React.createElement(
           'div',
           { className: 'container' },
@@ -42,14 +41,23 @@ if (window.MR === undefined) {
             null,
             'Youtube in script JS'
           ),
-          React.createElement(MR.YoutubeComponent, null)
+          React.createElement(MR.YoutubeComponent, null),
+          React.createElement(
+            'div',
+            null,
+            React.createElement(
+              ReactRouter.Link,
+              { to: '/RecordingComponent' },
+              'Go to the RecordingComponent'
+            )
+          )
         );
       }
     }]);
 
-    return AppComponent;
+    return HomeComponent;
   }(React.Component);
 
-  ReactDOM.render(React.createElement(AppComponent, null), mountNode);
+  MR.HomeComponent = HomeComponent;
 })();
-//# sourceMappingURL=script.js.map
+//# sourceMappingURL=HomeComponent.js.map

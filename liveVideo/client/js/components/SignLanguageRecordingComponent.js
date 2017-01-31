@@ -17,7 +17,7 @@ if (window.MR === undefined) {window.MR = {};}
   var mediaSource = new MediaSource();
   var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
 
-  class RecordingComponent extends React.Component {
+  class SignLanguageRecordingComponent extends React.Component {
 
 
     theRecording(stream){
@@ -133,5 +133,5 @@ if (window.MR === undefined) {window.MR = {};}
 
     };
   }
-  MR.RecordingComponent = RecordingComponent;
+  MR.SignLanguageRecordingComponent = SignLanguageRecordingComponent;
 }());

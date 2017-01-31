@@ -54,7 +54,7 @@ if (window.MR === undefined) {window.MR = {};}
         var YoutubeUrl = 'http://www.youtube.com/watch?v='
         var embeddedUrl ='https://www.youtube.com/embed/'
         return <div className="youtube-component">
-
+          <iframe name= "iframeName" className="iframeName"></iframe>
           <div className="search-bar">
               <input placeholder ="search" onKeyUp={(evt) => {this.keyUp(evt); }} ref={(theDomElement) => {this.theInput = theDomElement;}}/>
               <button onClick={() => {this.clicky(); }}>enter</button>

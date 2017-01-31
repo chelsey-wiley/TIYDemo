@@ -3,6 +3,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
 var nodemon = require('gulp-nodemon');
+var concat = require('gulp-concat');
 
 gulp.task('default', ['sass', 'sass:watch', 'babel', 'babel:watch', 'start']);
 
@@ -21,11 +22,17 @@ gulp.task('sass:watch', function () {
 });
 
 gulp.task('babel', function() {
-  return gulp.src('./client/js/**/*.js')
+  return gulp.src(
+      [
+        './client/js/components/*.js',
+        './client/js/router.js' //The router needs to be last, since it hooks up all the previous
+      ])
       .pipe(sourcemaps.init())
       .pipe(babel({
-          presets: ['es2015', 'react'] // only es2015 preset now. React later.
+          presets: ['es2015', 'react']
       }))
+      .on('error', console.error.bind(console))
+      .pipe(concat('all.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('public'));
 });

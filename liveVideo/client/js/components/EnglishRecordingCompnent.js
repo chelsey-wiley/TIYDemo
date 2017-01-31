@@ -4,8 +4,8 @@ if (window.MR === undefined) {window.MR = {};}
   'use strict';
 
   var constraints = {
-    "video": true,
-    "audio": false
+    "video": false,
+    "audio": true,
   };
 
 
@@ -17,7 +17,7 @@ if (window.MR === undefined) {window.MR = {};}
   var mediaSource = new MediaSource();
   var createSrc = window.URL ? window.URL.createObjectURL : function(stream) {return stream;};
 
-  class RecordingComponent extends React.Component {
+  class EnglishRecordingComponent extends React.Component {
 
 
     theRecording(stream){
@@ -104,11 +104,11 @@ if (window.MR === undefined) {window.MR = {};}
     render(){
       var videoStream = null;
       return ( <div className="container">
-      <header>
-        <div><ReactRouter.Link to={'/RecordingComponent'}>Sign Language</ReactRouter.Link></div>
-        <div><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></div>
-        <div><ReactRouter.Link to={'/'}>Home</ReactRouter.Link></div>
-      </header>
+        <header>
+          <div><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></div>
+          <div><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></div>
+          <div><ReactRouter.Link to={'/'}>Home</ReactRouter.Link></div>
+        </header>
           <div className="recorder-container">
             <h1>Recorder</h1>
 
@@ -133,5 +133,5 @@ if (window.MR === undefined) {window.MR = {};}
 
     };
   }
-  MR.RecordingComponent = RecordingComponent;
+  MR.EnglishRecordingComponent = EnglishRecordingComponent;
 }());
