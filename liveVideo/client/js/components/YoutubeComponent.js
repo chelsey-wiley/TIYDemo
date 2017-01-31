@@ -1,4 +1,4 @@
-if (window.FC === undefined) {window.FC = {};}
+if (window.MR === undefined) {window.MR = {};}
 
 (function() {
   'use strict';
@@ -73,5 +73,5 @@ if (window.FC === undefined) {window.FC = {};}
 
     }
   }
-  FC.YoutubeComponent = YoutubeComponent;
+  MR.YoutubeComponent = YoutubeComponent;
 }());

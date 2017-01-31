@@ -1,10 +1,10 @@
 "use strict";
 
 if (window === undefined) {
-  window.FC = {};
+  window.MR = {};
 }
 (function () {
 
-  FC.DataComponent = {};
+  MR.DataComponent = {};
 })();
 //# sourceMappingURL=DataComponent.js.map

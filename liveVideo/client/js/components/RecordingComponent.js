@@ -1,4 +1,4 @@
-if (window.FC === undefined) {window.FC = {};}
+if (window.MR === undefined) {window.MR = {};}
 
 
 (function() {
@@ -128,5 +128,5 @@ if (window.FC === undefined) {window.FC = {};}
 
     };
   }
-  FC.RecordingComponent = RecordingComponent;
+  MR.RecordingComponent = RecordingComponent;
 }());

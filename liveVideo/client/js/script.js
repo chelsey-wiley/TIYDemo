@@ -1,4 +1,4 @@
-if (window.FC === undefined) {window.FC = {};}
+if (window.MR === undefined) {window.FC = {};}
 
 (function() {
 var mountNode = document.querySelector('#react-root');
@@ -8,10 +8,10 @@ class AppComponent extends React.Component {
     return <div className="container">
 
       <h2> Recording in script JS</h2>
-      <FC.RecordingComponent/>
+      <MR.RecordingComponent/>
 
       <h2>Youtube in script JS</h2>
-      <FC.YoutubeComponent/>
+      <MR.YoutubeComponent/>
 
     </div>;
   }

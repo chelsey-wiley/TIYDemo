@@ -1,8 +1,8 @@
-if (window === undefined) {window.FC = {};}
+if (window === undefined) {window.MR = {};}
 (function() {
 
 
-  FC.DataComponent = {
+  MR.DataComponent = {
   }
 
 
