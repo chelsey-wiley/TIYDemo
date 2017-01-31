@@ -6,7 +6,7 @@ if (window.FC === undefined) {window.FC = {};}
 
   var constraints = {
     "video": true,
-    "audio": true
+    "audio": false
   };
 
 

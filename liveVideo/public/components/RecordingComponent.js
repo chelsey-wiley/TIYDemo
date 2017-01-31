@@ -17,7 +17,7 @@ if (window.FC === undefined) {
 
   var constraints = {
     "video": true,
-    "audio": true
+    "audio": false
   };
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || null;
