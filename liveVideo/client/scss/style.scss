@@ -1,18 +1,5 @@
 @import 'reset';
-
-.youtube-component {
-  border: 1px solid green;
-}
-.results {
-  background-color: yellow;
-}
-.iframeName{
-  height: 300px;
-  width: 500px;
-  border: 1px solid green;
-}
-
-video {
-  background-color: black;
-  margin: 40px;
-}
+@import 'variables';
+@import 'home';
+@import 'recorder';
+@import 'youtube';

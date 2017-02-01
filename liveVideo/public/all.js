@@ -173,7 +173,7 @@ if (window.MR === undefined) {
         var videoStream = null;
         return React.createElement(
           "div",
-          { className: "container" },
+          { className: "page" },
           React.createElement(
             "header",
             null,
@@ -182,7 +182,7 @@ if (window.MR === undefined) {
               null,
               React.createElement(
                 "button",
-                { className: "Button-to-ASL" },
+                { className: "button-to-ASL" },
                 React.createElement(
                   ReactRouter.Link,
                   { to: '/SignLanguageRecordingComponent' },
@@ -195,7 +195,7 @@ if (window.MR === undefined) {
               null,
               React.createElement(
                 "button",
-                { className: "Button-to-English" },
+                { className: "button-to-English" },
                 React.createElement(
                   ReactRouter.Link,
                   { to: '/EnglishRecordingComponent' },
@@ -206,54 +206,53 @@ if (window.MR === undefined) {
           ),
           React.createElement(
             "div",
-            { className: "recorder-container" },
-            React.createElement(
-              "h1",
-              { className: "page-title" },
-              "Sign Language Recorder"
-            ),
-            React.createElement("video", { id: "video", controls: true, autoPlay: true }),
+            { className: "container" },
             React.createElement(
               "div",
-              { className: "video-buttons" },
+              { className: "recorder-container" },
+              React.createElement("video", { id: "video", controls: true, autoPlay: true }),
               React.createElement(
-                "button",
-                { id: "supported", onClick: function onClick() {
-                    _this3.clickSupport();
-                  } },
-                "Support"
-              ),
-              React.createElement(
-                "button",
-                { id: "record", onClick: function onClick() {
-                    _this3.clickRec();
-                  } },
-                "Record"
-              ),
-              React.createElement(
-                "button",
-                { id: "stop", onClick: function onClick() {
-                    _this3.clickStop();
-                  } },
-                "Stop"
-              ),
-              React.createElement(
-                "button",
-                { id: "play", onClick: function onClick() {
-                    _this3.clickPlay();
-                  } },
-                "Play"
-              ),
-              React.createElement(
-                "button",
-                { id: "download", onClick: function onClick() {
-                    _this3.clickDownload();
-                  } },
-                "Download"
+                "div",
+                { className: "video-buttons" },
+                React.createElement(
+                  "button",
+                  { id: "supported", onClick: function onClick() {
+                      _this3.clickSupport();
+                    } },
+                  "Support"
+                ),
+                React.createElement(
+                  "button",
+                  { id: "record", onClick: function onClick() {
+                      _this3.clickRec();
+                    } },
+                  "Record"
+                ),
+                React.createElement(
+                  "button",
+                  { id: "stop", onClick: function onClick() {
+                      _this3.clickStop();
+                    } },
+                  "Stop"
+                ),
+                React.createElement(
+                  "button",
+                  { id: "play", onClick: function onClick() {
+                      _this3.clickPlay();
+                    } },
+                  "Play"
+                ),
+                React.createElement(
+                  "button",
+                  { id: "download", onClick: function onClick() {
+                      _this3.clickDownload();
+                    } },
+                  "Download"
+                )
               )
-            )
-          ),
-          React.createElement(MR.YoutubeComponent, null)
+            ),
+            React.createElement(MR.YoutubeComponent, null)
+          )
         );
       }
     }]);
@@ -293,43 +292,38 @@ console.log('home component');
 
         return React.createElement(
           "div",
-          { className: "container" },
+          { className: "page" },
           React.createElement(
-            "h1",
-            { className: "indexH1" },
-            "Language Evaluator"
-          ),
-          React.createElement(
-            "h2",
-            { className: "indexH2" },
-            "Which Language would you like Evaluated"
-          ),
-          React.createElement(
-            "div",
+            "header",
             null,
             React.createElement(
-              "button",
-              { className: "Button-to-ASL" },
+              "div",
+              null,
               React.createElement(
-                ReactRouter.Link,
-                { to: '/SignLanguageRecordingComponent' },
-                "Sign Language"
+                "button",
+                { className: "button-to-ASL" },
+                React.createElement(
+                  ReactRouter.Link,
+                  { to: '/SignLanguageRecordingComponent' },
+                  "Sign Language"
+                )
+              )
+            ),
+            React.createElement(
+              "div",
+              null,
+              React.createElement(
+                "button",
+                { className: "button-to-English" },
+                React.createElement(
+                  ReactRouter.Link,
+                  { to: '/EnglishRecordingComponent' },
+                  "English"
+                )
               )
             )
           ),
-          React.createElement(
-            "div",
-            null,
-            React.createElement(
-              "button",
-              { className: "Button-to-English" },
-              React.createElement(
-                ReactRouter.Link,
-                { to: '/EnglishRecordingComponent' },
-                "English"
-              )
-            )
-          )
+          React.createElement("div", { className: "container" })
         );
       }
     }]);
@@ -702,7 +696,7 @@ if (window.MR === undefined) {
         var videoStream = null;
         return React.createElement(
           "div",
-          { className: "container" },
+          { className: "page" },
           React.createElement(
             "header",
             null,
@@ -711,7 +705,7 @@ if (window.MR === undefined) {
               null,
               React.createElement(
                 "button",
-                { className: "Button-to-ASL" },
+                { className: "button-to-ASL" },
                 React.createElement(
                   ReactRouter.Link,
                   { to: '/SignLanguageRecordingComponent' },
@@ -724,7 +718,7 @@ if (window.MR === undefined) {
               null,
               React.createElement(
                 "button",
-                { className: "Button-to-English" },
+                { className: "button-to-English" },
                 React.createElement(
                   ReactRouter.Link,
                   { to: '/EnglishRecordingComponent' },
@@ -735,54 +729,53 @@ if (window.MR === undefined) {
           ),
           React.createElement(
             "div",
-            { className: "recorder-container" },
-            React.createElement(
-              "h1",
-              { className: "page-title" },
-              "Sign Language Recorder"
-            ),
-            React.createElement("video", { id: "video", controls: true, autoPlay: true }),
+            { className: "container" },
             React.createElement(
               "div",
-              { className: "video-buttons" },
+              { className: "recorder-container" },
+              React.createElement("video", { id: "video", controls: true, autoPlay: true }),
               React.createElement(
-                "button",
-                { id: "supported", onClick: function onClick() {
-                    _this3.clickSupport();
-                  } },
-                "Support"
-              ),
-              React.createElement(
-                "button",
-                { id: "record", onClick: function onClick() {
-                    _this3.clickRec();
-                  } },
-                "Record"
-              ),
-              React.createElement(
-                "button",
-                { id: "stop", onClick: function onClick() {
-                    _this3.clickStop();
-                  } },
-                "Stop"
-              ),
-              React.createElement(
-                "button",
-                { id: "play", onClick: function onClick() {
-                    _this3.clickPlay();
-                  } },
-                "Play"
-              ),
-              React.createElement(
-                "button",
-                { id: "download", onClick: function onClick() {
-                    _this3.clickDownload();
-                  } },
-                "Download"
+                "div",
+                { className: "video-buttons" },
+                React.createElement(
+                  "button",
+                  { id: "supported", onClick: function onClick() {
+                      _this3.clickSupport();
+                    } },
+                  "Support"
+                ),
+                React.createElement(
+                  "button",
+                  { id: "record", onClick: function onClick() {
+                      _this3.clickRec();
+                    } },
+                  "Record"
+                ),
+                React.createElement(
+                  "button",
+                  { id: "stop", onClick: function onClick() {
+                      _this3.clickStop();
+                    } },
+                  "Stop"
+                ),
+                React.createElement(
+                  "button",
+                  { id: "play", onClick: function onClick() {
+                      _this3.clickPlay();
+                    } },
+                  "Play"
+                ),
+                React.createElement(
+                  "button",
+                  { id: "download", onClick: function onClick() {
+                      _this3.clickDownload();
+                    } },
+                  "Download"
+                )
               )
-            )
-          ),
-          React.createElement(MR.YoutubeComponent, null)
+            ),
+            React.createElement(MR.YoutubeComponent, null)
+          )
         );
       }
     }]);
@@ -829,6 +822,7 @@ if (window.MR === undefined) {
           items: []
         }
       };
+      _this.page = "&pageToken=CAoQAA";
       console.log('getting the info');
       return _this;
     }
@@ -837,26 +831,30 @@ if (window.MR === undefined) {
       key: 'clicky',
       value: function clicky() {
         console.log('the input is', this.theInput.value, 'the page is');
-        this.theData(this.theInput.value);
+        this.callAPI(this.theInput.value);
       }
     }, {
       key: 'pageUp',
       value: function pageUp() {
         console.log('paging');
-        this.theData('the data is:', this.theInput.value) + "&pageToken=CAoQAA";
+        this.callAPI(this.theInput.value, this.page);
       }
     }, {
       key: 'keyUp',
       value: function keyUp(evt) {
         console.log(evt.keyCode, evt.target);
         if (evt.keyCode === 13) {
-          this.theData(evt.target.value);
+          this.callAPI(evt.target.value);
         }
       }
     }, {
-      key: 'theData',
-      value: function theData() {
+      key: 'callAPI',
+      value: function callAPI(page) {
         var _this2 = this;
+
+        if (page === undefined) {
+          page = "&pageToken=CAoQAA";
+        }
 
         $.ajax({
           url: "https://www.googleapis.com/youtube/v3/search?q=" + this.theInput.value + "&q=YouTube+Data+API" + "&maxResults=10" + "&type=video" + "&videoCaption=closedCaption" + "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" + "&part=snippet"
@@ -876,7 +874,7 @@ if (window.MR === undefined) {
         var embeddedUrl = 'https://www.youtube.com/embed/';
         return React.createElement(
           'div',
-          { className: 'youtube-component' },
+          { className: 'youtube-container' },
           React.createElement('iframe', { name: 'iframeName', className: 'iframeName' }),
           React.createElement(
             'div',

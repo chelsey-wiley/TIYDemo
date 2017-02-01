@@ -98,13 +98,13 @@ if (window.MR === undefined) {window.MR = {};}
 
     render(){
       var videoStream = null;
-      return ( <div className="container">
+      return ( <div className="page">
       <header>
-        <div><button className="Button-to-ASL"><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></button></div>
-        <div><button className="Button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></button></div>
+        <div><button className="button-to-ASL"><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></button></div>
+        <div><button className="button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></button></div>
       </header>
+        <div className="container">
           <div className="recorder-container">
-            <h1 className="page-title">Sign Language Recorder</h1>
             <video id="video" controls autoPlay></video>
             <div className="video-buttons">
               <button id="supported" onClick={() => {this.clickSupport();}}>Support</button>
@@ -116,6 +116,7 @@ if (window.MR === undefined) {window.MR = {};}
           </div>
           <MR.YoutubeComponent/>
         </div>
+      </div>
       )
 
     };

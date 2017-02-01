@@ -5,12 +5,13 @@ console.log ('home component');
 class HomeComponent extends React.Component {
   render() {
 
-    return <div className="container">
-      <h1 className="indexH1">Language Evaluator</h1>
-      <h2 className="indexH2">Which Language would you like Evaluated</h2>
-      
-      <div><button className="Button-to-ASL"><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></button></div>
-      <div><button className="Button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></button></div>
+    return <div className="page">
+      <header>
+        <div><button className="button-to-ASL"><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></button></div>
+        <div><button className="button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></button></div>
+      </header>
+      <div className="container">
+      </div>
     </div>;
   }
 }

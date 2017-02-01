@@ -15,28 +15,34 @@ if (window.MR === undefined) {window.MR = {};}
           items:[]
         }
       }
+      this.page ="&pageToken=CAoQAA";
       console.log('getting the info');
     }
 
     clicky(){
       console.log('the input is', this.theInput.value, 'the page is');
-      this.theData(this.theInput.value);
+      this.callAPI(this.theInput.value);
     }
 
     pageUp(){
       console.log('paging');
-      this.theData('the data is:', this.theInput.value) +
-     "&pageToken=CAoQAA";
+      this.callAPI(this.theInput.value, this.page)
    };
 
     keyUp(evt) {
       console.log(evt.keyCode, evt.target);
       if (evt.keyCode === 13) {
-        this.theData(evt.target.value);
+        this.callAPI(evt.target.value);
       }
     }
 
-    theData(){
+    callAPI(page){
+
+      if (page === undefined) {
+        page = "&pageToken=CAoQAA"
+      }
+
+
       $.ajax({
         url: "https://www.googleapis.com/youtube/v3/search?q=" +
           this.theInput.value +
@@ -47,18 +53,20 @@ if (window.MR === undefined) {window.MR = {};}
           "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" +
           "&part=snippet"
       })
+
       .done((data)=> {
         console.log('got the data', data);
         this.setState({
           apiResult:data
         });
       });
+
     }
 
       render() {
         var YoutubeUrl = 'http://www.youtube.com/watch?v='
         var embeddedUrl ='https://www.youtube.com/embed/'
-        return <div className="youtube-component">
+        return <div className="youtube-container">
           <iframe name= "iframeName" className="iframeName"></iframe>
           <div className="search-bar">
               <input placeholder ="search" onKeyUp={(evt) => {this.keyUp(evt); }} ref={(theDomElement) => {this.theInput = theDomElement;}}/>
