@@ -4,7 +4,7 @@ if (window.MR === undefined) {window.MR = {};}
   'use strict';
 
   var constraints = {
-    "video": true,
+    "video": false,
     "audio": true
   };
 
@@ -101,6 +101,8 @@ if (window.MR === undefined) {window.MR = {};}
       return ( <div className="page">
         <MR.HeaderComponent/>
         <div className="container">
+          <h1>English Recording</h1>
+          <p>This will have no video</p>
           <div className="recorder-container">
             <video id="video" controls autoPlay></video>
             <div className="video-buttons">

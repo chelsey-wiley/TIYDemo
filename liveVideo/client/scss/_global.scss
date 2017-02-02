@@ -1,0 +1,15 @@
+body{
+  background-image: url("/images/bg-content.jpg");
+};
+
+h1{
+  font-family: $headerfont;
+  font-size: 3em;
+  padding: 10px;
+}
+
+p{
+  font-family: $bodyfont;
+  font-size: 1em;
+  padding: 10px;
+}

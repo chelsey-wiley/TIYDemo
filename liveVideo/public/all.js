@@ -57,7 +57,7 @@ if (window.MR === undefined) {
   'use strict';
 
   var constraints = {
-    "video": true,
+    "video": false,
     "audio": true
   };
 
@@ -179,6 +179,16 @@ if (window.MR === undefined) {
             "div",
             { className: "container" },
             React.createElement(
+              "h1",
+              null,
+              "English Recording"
+            ),
+            React.createElement(
+              "p",
+              null,
+              "This will have no video"
+            ),
+            React.createElement(
               "div",
               { className: "recorder-container" },
               React.createElement("video", { id: "video", controls: true, autoPlay: true }),
@@ -290,6 +300,19 @@ console.log('English component');
                   ReactRouter.Link,
                   { to: '/EnglishRecordingComponent' },
                   "English"
+                )
+              )
+            ),
+            React.createElement(
+              "div",
+              null,
+              React.createElement(
+                "button",
+                { className: "button-to-home" },
+                React.createElement(
+                  ReactRouter.Link,
+                  { to: '/' },
+                  "Home"
                 )
               )
             )
@@ -743,6 +766,16 @@ if (window.MR === undefined) {
             "div",
             { className: "container" },
             React.createElement(
+              "h1",
+              null,
+              "Sign Language Recording"
+            ),
+            React.createElement(
+              "p",
+              null,
+              "This will have no audio"
+            ),
+            React.createElement(
               "div",
               { className: "recorder-container" },
               React.createElement("video", { id: "video", controls: true, autoPlay: true }),
@@ -843,20 +876,26 @@ if (window.MR === undefined) {
       key: 'clicky',
       value: function clicky() {
         console.log('the input is', this.theInput.value, 'the page is');
-        this.callAPI(this.theInput.value);
+        this.callAPI();
       }
     }, {
       key: 'pageUp',
       value: function pageUp() {
-        console.log('paging');
-        this.callAPI(this.theInput.value, this.page);
+        console.log('next page');
+        this.callAPI(this.state.apiResult.nextPageToken);
+      }
+    }, {
+      key: 'pageDown',
+      value: function pageDown() {
+        console.log('previous page');
+        this.callAPI(this.state.apiResult.previousPageToken);
       }
     }, {
       key: 'keyUp',
       value: function keyUp(evt) {
         console.log(evt.keyCode, evt.target);
         if (evt.keyCode === 13) {
-          this.callAPI(evt.target.value);
+          this.callAPI(evt.target);
         }
       }
     }, {
@@ -864,12 +903,16 @@ if (window.MR === undefined) {
       value: function callAPI(page) {
         var _this2 = this;
 
-        if (page === undefined) {
-          page = "&pageToken=CAoQAA";
+        console.log('page', page);
+        var urlString = "https://www.googleapis.com/youtube/v3/search?q=" + this.theInput.value + "&q=YouTube+Data+API" + "&maxResults=10" + "&type=video" + "&videoCaption=closedCaption" + "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" + "&part=snippet";
+
+        if (page !== undefined) {
+
+          urlString += "&pageToken=" + page;
         }
 
         $.ajax({
-          url: "https://www.googleapis.com/youtube/v3/search?q=" + this.theInput.value + "&q=YouTube+Data+API" + "&maxResults=10" + "&type=video" + "&videoCaption=closedCaption" + "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" + "&part=snippet"
+          url: urlString
         }).done(function (data) {
           console.log('got the data', data);
           _this2.setState({
@@ -908,7 +951,14 @@ if (window.MR === undefined) {
               { onClick: function onClick() {
                   _this3.pageUp();
                 } },
-              'page up'
+              'next'
+            ),
+            React.createElement(
+              'button',
+              { onClick: function onClick() {
+                  _this3.pageDown();
+                } },
+              'previous'
             )
           ),
           React.createElement(

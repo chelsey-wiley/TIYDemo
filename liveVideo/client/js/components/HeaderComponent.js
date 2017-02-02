@@ -10,6 +10,7 @@ class HeaderComponent extends React.Component {
       <header>
         <div><button className="button-to-ASL"><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></button></div>
         <div><button className="button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></button></div>
+        <div><button className="button-to-home"><ReactRouter.Link to={'/'}>Home</ReactRouter.Link></button></div>
       </header>
 
     </div>;

@@ -21,37 +21,45 @@ if (window.MR === undefined) {window.MR = {};}
 
     clicky(){
       console.log('the input is', this.theInput.value, 'the page is');
-      this.callAPI(this.theInput.value);
+      this.callAPI();
     }
 
     pageUp(){
-      console.log('paging');
-      this.callAPI(this.theInput.value, this.page)
+      console.log('next page');
+      this.callAPI(this.state.apiResult.nextPageToken)
+   };
+
+   pageDown(){
+     console.log('previous page')
+     this.callAPI(this.state.apiResult.previousPageToken)
    };
 
     keyUp(evt) {
       console.log(evt.keyCode, evt.target);
       if (evt.keyCode === 13) {
-        this.callAPI(evt.target.value);
+        this.callAPI(evt.target);
       }
     }
 
     callAPI(page){
+      console.log('page', page)
+      var urlString = "https://www.googleapis.com/youtube/v3/search?q=" +
+        this.theInput.value +
+        "&q=YouTube+Data+API" +
+        "&maxResults=10" +
+        "&type=video" +
+        "&videoCaption=closedCaption" +
+        "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" +
+        "&part=snippet";
 
-      if (page === undefined) {
-        page = "&pageToken=CAoQAA"
+      if (page !== undefined) {
+
+        urlString += "&pageToken=" + page
       }
 
 
       $.ajax({
-        url: "https://www.googleapis.com/youtube/v3/search?q=" +
-          this.theInput.value +
-          "&q=YouTube+Data+API" +
-          "&maxResults=10" +
-          "&type=video" +
-          "&videoCaption=closedCaption" +
-          "&key=AIzaSyCoB7cJEg8MY9y8vgWby0nlhoJbImoEkF8" +
-          "&part=snippet"
+        url: urlString
       })
 
       .done((data)=> {
@@ -71,7 +79,8 @@ if (window.MR === undefined) {window.MR = {};}
           <div className="search-bar">
               <input placeholder ="search" onKeyUp={(evt) => {this.keyUp(evt); }} ref={(theDomElement) => {this.theInput = theDomElement;}}/>
               <button onClick={() => {this.clicky();}}>enter</button>
-              <button onClick={() => {this.pageUp();}}>page up</button>
+              <button onClick={() => {this.pageUp();}}>next</button>
+              <button onClick={() => {this.pageDown();}}>previous</button>
           </div>
 
 
