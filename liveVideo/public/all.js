@@ -279,41 +279,29 @@ console.log('English component');
             null,
             React.createElement(
               "div",
-              null,
+              { className: "button-to-ASL" },
               React.createElement(
-                "button",
-                { className: "button-to-ASL" },
-                React.createElement(
-                  ReactRouter.Link,
-                  { to: '/SignLanguageRecordingComponent' },
-                  "Sign Language"
-                )
+                ReactRouter.Link,
+                { to: '/SignLanguageRecordingComponent' },
+                "Sign Language"
               )
             ),
             React.createElement(
               "div",
-              null,
+              { className: "button-to-English" },
               React.createElement(
-                "button",
-                { className: "button-to-English" },
-                React.createElement(
-                  ReactRouter.Link,
-                  { to: '/EnglishRecordingComponent' },
-                  "English"
-                )
+                ReactRouter.Link,
+                { to: '/EnglishRecordingComponent' },
+                "English"
               )
             ),
             React.createElement(
               "div",
-              null,
+              { className: "button-to-home" },
               React.createElement(
-                "button",
-                { className: "button-to-home" },
-                React.createElement(
-                  ReactRouter.Link,
-                  { to: '/' },
-                  "Home"
-                )
+                ReactRouter.Link,
+                { to: '/' },
+                "Home"
               )
             )
           )
@@ -362,28 +350,20 @@ console.log('home component');
             null,
             React.createElement(
               "div",
-              null,
+              { className: "button-to-ASL" },
               React.createElement(
-                "button",
-                { className: "button-to-ASL" },
-                React.createElement(
-                  ReactRouter.Link,
-                  { to: '/SignLanguageRecordingComponent' },
-                  "Sign Language"
-                )
+                ReactRouter.Link,
+                { to: '/SignLanguageRecordingComponent' },
+                "Sign Language"
               )
             ),
             React.createElement(
               "div",
-              null,
+              { className: "button-to-English" },
               React.createElement(
-                "button",
-                { className: "button-to-English" },
-                React.createElement(
-                  ReactRouter.Link,
-                  { to: '/EnglishRecordingComponent' },
-                  "English"
-                )
+                ReactRouter.Link,
+                { to: '/EnglishRecordingComponent' },
+                "English"
               )
             )
           ),

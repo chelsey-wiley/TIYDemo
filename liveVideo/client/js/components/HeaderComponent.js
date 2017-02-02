@@ -8,9 +8,9 @@ class HeaderComponent extends React.Component {
     return <div className="div-head">
 
       <header>
-        <div><button className="button-to-ASL"><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></button></div>
-        <div><button className="button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></button></div>
-        <div><button className="button-to-home"><ReactRouter.Link to={'/'}>Home</ReactRouter.Link></button></div>
+        <div className="button-to-ASL"><ReactRouter.Link to={'/SignLanguageRecordingComponent'}>Sign Language</ReactRouter.Link></div>
+        <div className="button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></div>
+        <div className="button-to-home"><ReactRouter.Link to={'/'}>Home</ReactRouter.Link></div>
       </header>
 
     </div>;
