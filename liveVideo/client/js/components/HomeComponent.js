@@ -11,6 +11,9 @@ class HomeComponent extends React.Component {
       <div className="button-to-English"><ReactRouter.Link to={'/EnglishRecordingComponent'}>English</ReactRouter.Link></div>
       </header>
       <div className="container">
+
+      <h1 className="home-header">Hi. I'm LAURA.</h1>
+      <p className="home-paragraph">Linguistically Aware Users Record Accessibly</p>
       </div>
     </div>;
   }

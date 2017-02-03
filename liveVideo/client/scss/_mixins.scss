@@ -1,4 +1,15 @@
 @mixin theButton{
-  background-color: green;
-  border: 1px solid yellow;
+  background-color: $carbon;
+  border-top: 1px solid $slate;
+  border-left:1px solid $slate;
+  border-bottom: 3px solid $slate;
+  border-right:3px solid $slate;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+  font-family: $bodyfont;
+  font-size: 1em;
+  width: 150px;
+  text-align: center;
+  color: $neutral;
 };

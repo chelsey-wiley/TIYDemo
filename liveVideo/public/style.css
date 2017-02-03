@@ -46,6 +46,10 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+a {
+  text-decoration: none;
+  color: inherit; }
+
 header {
   background-color: #efefef;
   border-bottom: 3px solid darkgray;
@@ -53,12 +57,57 @@ header {
   height: 100px; }
 
 .button-to-ASL {
-  background-color: green;
-  border: 1px solid yellow; }
+  background-color: darkgray;
+  border-top: 1px solid #545454;
+  border-left: 1px solid #545454;
+  border-bottom: 3px solid #545454;
+  border-right: 3px solid #545454;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1em;
+  width: 150px;
+  text-align: center;
+  color: #efefef;
+  float: left; }
+
+.button-to-ASL:hover {
+  border-bottom: 1px solid #545454;
+  border-right: 1px solid #545454; }
 
 .button-to-English {
-  background-color: green;
-  border: 1px solid yellow; }
+  background-color: darkgray;
+  border-top: 1px solid #545454;
+  border-left: 1px solid #545454;
+  border-bottom: 3px solid #545454;
+  border-right: 3px solid #545454;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 15px;
+  font-family: "Raleway", sans-serif;
+  font-size: 1em;
+  width: 150px;
+  text-align: center;
+  color: #efefef;
+  float: right; }
+
+.button-to-English:hover {
+  border-bottom: 1px solid #545454;
+  border-right: 1px solid #545454; }
+
+.home-header {
+  margin-top: 20px;
+  padding: 20px;
+  color: #ff383e;
+  text-align: center;
+  font-size: 5em; }
+
+.home-paragraph {
+  padding: 20px;
+  color: #ff383e;
+  text-align: center;
+  font-size: 2em; }
 
 body {
   background-image: url("/images/bg-content.jpg"); }
@@ -87,22 +136,32 @@ p {
 video {
   background-color: black;
   height: 400px;
-  width: 400px; }
+  width: 500px; }
+
+.textarea {
+  margin-top: 20px;
+  width: 500px;
+  height: 200px;
+  background-color: #efefef;
+  font-family: "Raleway", sans-serif;
+  font-size: 1em; }
 
 .youtube-container {
   float: right;
   padding: 20px;
   margin: 20px;
-  max-width: 60%;
+  max-width: 45%;
   text-align: center; }
 
 .iframeName {
   height: 300px;
   width: 500px;
-  background-color: black; }
+  background-color: black;
+  padding: 25px;
+  margin: 25px; }
 
 .results {
   background-color: yellow;
-  max-width: 100%; }
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

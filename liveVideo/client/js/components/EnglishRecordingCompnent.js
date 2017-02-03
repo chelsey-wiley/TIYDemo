@@ -111,8 +111,12 @@ if (window.MR === undefined) {window.MR = {};}
               <button id="stop" onClick={() => {this.clickStop();}}>Stop</button>
               <button id="play" onClick={() => {this.clickPlay();}}>Play</button>
               <button id="download" onClick={()=> {this.clickDownload();}}>Download</button>
+              <textarea className="textarea">
+              Write English Here
+              </textarea>
             </div>
           </div>
+
           <MR.YoutubeComponent/>
         </div>
       </div>

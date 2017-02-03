@@ -7,7 +7,21 @@ header{
 
 .button-to-ASL{
   @include theButton;
+  float: left;
+};
+
+.button-to-ASL:hover{
+  border-bottom: 1px solid $slate;
+  border-right:1px solid $slate;
 }
+
 .button-to-English{
   @include theButton;
+    float: right;
+};
+
+.button-to-English:hover{
+  border-bottom: 1px solid $slate;
+  border-right:1px solid $slate;
+
 }

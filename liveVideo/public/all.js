@@ -229,6 +229,11 @@ if (window.MR === undefined) {
                       _this3.clickDownload();
                     } },
                   "Download"
+                ),
+                React.createElement(
+                  "textarea",
+                  { className: "textarea" },
+                  "Write English Here"
                 )
               )
             ),
@@ -367,7 +372,20 @@ console.log('home component');
               )
             )
           ),
-          React.createElement("div", { className: "container" })
+          React.createElement(
+            "div",
+            { className: "container" },
+            React.createElement(
+              "h1",
+              { className: "home-header" },
+              "Hi. I'm LAURA."
+            ),
+            React.createElement(
+              "p",
+              { className: "home-paragraph" },
+              "Linguistically Aware Users Record Accessibly"
+            )
+          )
         );
       }
     }]);

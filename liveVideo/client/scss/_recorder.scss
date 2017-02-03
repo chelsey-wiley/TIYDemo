@@ -13,5 +13,14 @@
 video {
   background-color: black;
   height: 400px;
-  width: 400px;
+  width: 500px;
 };
+
+.textarea{
+  margin-top: 20px;
+  width: 500px;
+  height: 200px;
+  background-color: $neutral;
+  font-family: $bodyfont;
+  font-size: 1em;
+}
